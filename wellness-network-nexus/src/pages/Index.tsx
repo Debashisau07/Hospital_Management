@@ -49,8 +49,9 @@ const Index = () => {
               Hospital Management System
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-              Efficiently manage and discover hospitals across cities with our comprehensive
-              hospital management platform. Find the right healthcare facility for your needs.
+              Efficiently manage and discover hospitals across cities with our
+              comprehensive hospital management platform. Find the right
+              healthcare facility for your needs.
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Button
@@ -84,9 +85,15 @@ const Index = () => {
                     key={index}
                     className="flex flex-col items-center rounded-xl p-4 text-center transition-all duration-300 hover:bg-accent/50"
                   >
-                    <div className="mb-4 rounded-full bg-primary/10 p-3">{feature.icon}</div>
-                    <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <div className="mb-4 rounded-full bg-primary/10 p-3">
+                      {feature.icon}
+                    </div>
+                    <h3 className="mb-2 text-lg font-semibold">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {feature.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -115,8 +122,9 @@ const Index = () => {
                 Comprehensive Hospital Management Platform
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Our system provides a streamlined approach to hospital information management.
-                Create, update, and maintain detailed profiles for healthcare facilities.
+                Our system provides a streamlined approach to hospital
+                information management. Create, update, and maintain detailed
+                profiles for healthcare facilities.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
@@ -181,8 +189,8 @@ const Index = () => {
             Ready to streamline your hospital management?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
-            Start using our platform today to efficiently manage hospital information and
-            improve healthcare facility discovery.
+            Start using our platform today to efficiently manage hospital
+            information and improve healthcare facility discovery.
           </p>
           <Button
             size="lg"
@@ -193,7 +201,7 @@ const Index = () => {
           </Button>
         </div>
       </section>
-      
+
       {/* New ChatBot Section */}
       <ChatBot />
     </div>
@@ -222,25 +230,28 @@ const ChatBot = () => {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Authorization": "Bearer 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" // Replace with your actual API key
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are a helpful assistant for hospital-related queries. Answer questions about hospitals, services provided, availability, and other related information.",
-            },
-            { role: "user", content: input },
-          ],
-          max_tokens: 150,
-        }),
-      });
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer Your_API_KEY", // Replace with your actual API key
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are a helpful assistant for hospital-related queries. Answer questions about hospitals, services provided, availability, and other related information.",
+              },
+              { role: "user", content: input },
+            ],
+            max_tokens: 150,
+          }),
+        }
+      );
 
       const data = await response.json();
       const botMessage = {
